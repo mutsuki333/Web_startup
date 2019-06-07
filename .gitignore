@@ -1,0 +1,14 @@
+**/.DS_Store
+**/*.out
+**/.ipynb_checkpoints
+**/__pycache__
+**/node_modules
+**/ENV
+**/.vscode
+**/~$*
+**/*.sock
+/db.sqlite3
+/dist
+/access.log
+/.cache
+
