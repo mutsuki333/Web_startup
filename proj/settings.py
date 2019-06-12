@@ -12,26 +12,27 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import json
 import os
 from django.core.exceptions import ImproperlyConfigured
+import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-with open(os.path.join(BASE_DIR, 'secrets.json')) as secrets_file:
-    secrets = json.load(secrets_file)
+# with open(os.path.join(BASE_DIR, 'secrets.json')) as secrets_file:
+#     secrets = json.load(secrets_file)
 
-def get_secret(setting, secrets=secrets):
-    """Get secret setting or fail with ImproperlyConfigured"""
-    try:
-        return secrets[setting]
-    except KeyError:
-        raise ImproperlyConfigured("Set the {} setting".format(setting))
+# def get_secret(setting, secrets=secrets):
+#     """Get secret setting or fail with ImproperlyConfigured"""
+#     try:
+#         return secrets[setting]
+#     except KeyError:
+#         raise ImproperlyConfigured("Set the {} setting".format(setting))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = 'lyobn=1cl@iqxm4c$$oz1gid^w=+l7(x%m9&k-jdh*kkl4v-hs'
-SECRET_KEY = get_secret('SECRET_KEY')
+SECRET_KEY = config.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -87,12 +88,7 @@ WSGI_APPLICATION = 'proj.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-	'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': get_secret('DB_NAME') or 'test',
-        'USER': get_secret('DB_USER') or 'root',
-		'PASSWORD' : get_secret('DB_PASSWORD') or ''
-    }
+	'default': config.DATABASE_CONFIG
 }
 
 
@@ -137,3 +133,5 @@ STATIC_URL = '/dist/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'dist')
 ]
+
+# STATIC_ROOT = os.path.join(BASE_DIR, 'dist')

@@ -1,6 +1,50 @@
 # Web_startup
-A repo for starting up a new website
-- [Web_startup](#webstartup)
+
+A repo for website development quick startup.  
+remove `.git/` and `git init` to start a new repo.  
+This website development uses:   
+**vue** **pug** **semantic_ui** **parcel** **django** **mysql**  
+to develop.
+
+The application structure is:
+
+```shell
+.
+├── README.md
+├── home
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── migrations
+│   ├── models.py
+│   ├── templates
+│   │   └── index.html -> ../../dist/index.html
+│   ├── tests.py
+│   └── views.py
+├── index.pug
+├── manage.py
+├── package.json
+├── proj
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── requirements.txt
+├── secrets.json
+└── src
+    ├── App.vue
+    ├── assets
+    │   └── logo.png
+    ├── components
+    │   └── HelloWorld.vue
+    ├── main.js
+    ├── router.js
+    ├── store.js
+    └── views
+        ├── About.vue
+        ├── Home.vue
+        └── Notfound.vue
+```
 
 ## Install
 
@@ -18,7 +62,7 @@ if error presented on installing `mysqlclient`.
 
 ### On mac  <!-- omit in toc -->
 
-`brew install mysql-client` 
+`brew install mysql-client`
 
 And for compilers to find mysql-client you may need to set:
 
@@ -64,6 +108,10 @@ for url history mode to work under subdir, set vue router base to `/<SUBDID>`,
 django settings add `FORCE_SCRIPT_NAME = '<SUBDIR>/'`
 
 ## configure for deployment
+
+### Setup static files
+
+run `python manage.py collectstatic`, to copy all the static files to the **STATIC_ROOT** set in the settings.py.
 
 ### uwsgi <!-- omit in toc -->
 

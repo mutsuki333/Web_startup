@@ -10,6 +10,7 @@
 
 <script>
 import 'semantic-ui-offline/semantic.min.css'
+import "babel-polyfill"
 
 </script>
 
