@@ -92,9 +92,6 @@ DATABASE_CONFIG = {
 SECRET_KEY = 'secret'
 ```
 
-Give null for default, to prevent parsing errors
-
-
 Then,
 
 ```shell
