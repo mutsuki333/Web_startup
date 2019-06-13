@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "repository": "git@github.com:mutsuki333/Web_startup.git",
   "author": "Evan <evanchen333@gmail.com>",
-  "license": "All rights reserved",
+  "license": "MIT",
   "private": true,
   "devDependencies": {
     "@vue/component-compiler-utils": "^3.0.0",

@@ -9,5 +9,3 @@ DATABASE_CONFIG = {
 }
 
 SECRET_KEY = 'secret'
-
-django_account = ["admin","admin"]

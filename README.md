@@ -30,7 +30,7 @@ The application structure is:
 │   ├── urls.py
 │   └── wsgi.py
 ├── requirements.txt
-├── secrets.json
+├── config.py
 └── src
     ├── App.vue
     ├── assets
@@ -77,15 +77,19 @@ export CPPFLAGS="-I/usr/local/opt/openssl/include"
 
 `sudo apt-get install libmysqlclient-dev`
 
-Then you need to make a **secrets.json** file for database connection etc.
+Then you need to make a **config.py** file for database connection etc.
 
-```json
-{
-    "SECRET_KEY" : "secret",
-    "DB_USER" : "name",
-    "DB_NAME" : "test",
-    "DB_PASSWORD" : "password",
+```python
+DATABASE_CONFIG = {
+    'ENGINE': 'django.db.backends.mysql',
+    'HOST': '',
+    'NAME': 'test',
+    'USER': 'root',
+    'PASSWORD': '',
+    'port': 3306
 }
+
+SECRET_KEY = 'secret'
 ```
 
 Give null for default, to prevent parsing errors
