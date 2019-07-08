@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import 'semantic-ui-offline/semantic.min.css'
 import "babel-polyfill"
+import "src/theme.sass"
 
 </script>
 

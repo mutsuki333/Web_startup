@@ -11,12 +11,20 @@ The application structure is:
 ```shell
 .
 ├── README.md
+├── config.py
 ├── home
 │   ├── __init__.py
 │   ├── admin.py
+│   ├── api
+│   │   ├── __init__.py
+│   │   ├── Other api modules
+│   │   └── ...
 │   ├── apps.py
 │   ├── migrations
-│   ├── models.py
+│   ├── models
+│   │   ├── __init__.py
+│   │   ├── other models.py
+│   │   └── ...
 │   ├── templates
 │   │   └── index.html -> ../../dist/index.html
 │   ├── tests.py
@@ -30,20 +38,22 @@ The application structure is:
 │   ├── urls.py
 │   └── wsgi.py
 ├── requirements.txt
-├── config.py
-└── src
-    ├── App.vue
-    ├── assets
-    │   └── logo.png
-    ├── components
-    │   └── HelloWorld.vue
-    ├── main.js
-    ├── router.js
-    ├── store.js
-    └── views
-        ├── About.vue
-        ├── Home.vue
-        └── Notfound.vue
+├── requirements_mysql.txt
+├── src
+│   ├── App.vue
+│   ├── assets
+│   │   └── logo.png
+│   ├── components
+│   │   └── components
+│   ├── main.js
+│   ├── modules
+│   │   └── modules.js
+│   ├── router.js
+│   ├── store.js
+│   ├── theme.sass
+│   └── views
+│       └── all views.vue
+└── yarn.lock
 ```
 
 ## Install
@@ -118,7 +128,7 @@ run `python manage.py collectstatic`, to copy all the static files to the **STAT
 
 ```
 [uwsgi]
-project = dennyplay
+project = project
 base = /home/share
 
 chdir = %(base)/%(project)
@@ -151,12 +161,12 @@ server {
     # error_log /var/log/nginx/error.log;
 
 	location /dist/ {
-        alias   /home/share/dennyplay/dist/;
+        alias   /home/share/project/dist/;
     }
 
     location / {
         include         uwsgi_params;
-        uwsgi_pass      unix:/home/share/dennyplay/dennyplay.sock;
+        uwsgi_pass      unix:/home/share/project/project.sock;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_redirect off;
     }
