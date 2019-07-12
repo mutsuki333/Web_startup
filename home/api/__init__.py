@@ -4,3 +4,5 @@ urlpatterns = []
 
 from .test import urlpatterns as testUrl
 urlpatterns.append(path('test/',include(testUrl)))
+# to use directly
+# urlpatterns+=testUrl

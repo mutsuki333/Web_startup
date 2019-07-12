@@ -90,6 +90,14 @@ export CPPFLAGS="-I/usr/local/opt/openssl/include"
 Then you need to make a **config.py** file for database connection etc.
 
 ```python
+# sqlite
+import os
+DATABASE_CONFIG ={
+    'ENGINE': 'django.db.backends.sqlite3',
+    'NAME': os.path.join(os.path.dirname(os.path.abspath(__file__)), 'db.sqlite3'),
+}
+
+# for mysql
 DATABASE_CONFIG = {
     'ENGINE': 'django.db.backends.mysql',
     'HOST': '',
